@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Base de Datos de Alumnos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Gestión de Alumnos</h1>
+
+        <!-- Alta de Alumnos -->
+        <section id="alta-alumno" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Alta de Alumnos</h2>
+                </div>
+                <div class="card-body">
+                    <form id="form-alumno" class="row g-3">
+                        <div class="col-md-4">
+                            <input type="text" id="nombre" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" required>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="edad" class="form-control" placeholder="Edad" required min="1">
+                        </div>
+                        <div class="col-md-2 d-grid">
+                            <button type="submit" class="btn btn-primary">Agregar Alumno</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de Alumnos -->
+        <section id="lista-alumnos" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lista de Alumnos</h2>
+                </div>
+                <div class="card-body">
+                    <ul id="ul-alumnos" class="list-group">
+                        <!-- Lista de alumnos con opciones de editar y eliminar -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestión de Alumnos -->
+        <section id="gestion-alumno" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Gestionar Alumno</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="select-alumno" class="form-label">Seleccionar Alumno:</label>
+                        <select id="select-alumno" class="form-select">
+                            <option value="">--Seleccionar Alumno--</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <h3>Inscribir a Materia</h3>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-md-8">
+                                <input type="text" id="materia" class="form-control" placeholder="Nombre de la Materia">
+                            </div>
+                            <div class="col-md-4">
+                                <button id="btn-inscribir-materia" class="btn btn-success w-100">Inscribir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <h3>Asignar Calificación</h3>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-md-4">
+                                <label for="select-materia" class="form-label">Seleccionar Materia:</label>
+                                <select id="select-materia" class="form-select">
+                                    <option value="">--Seleccionar Materia--</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" id="calificacion" class="form-control" placeholder="Calificación"
+                                    min="0" max="10" step="0.1">
+                            </div>
+                            <div class="col-md-4">
+                                <button id="btn-asignar-calificacion" class="btn btn-primary w-100">Asignar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de Grupos -->
+        <section id="lista-grupos" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lista de Grupos</h2>
+                </div>
+                <div class="card-body">
+                    <ul id="ul-grupos" class="list-group">
+                        <!-- Lista de grupos con opciones de editar y eliminar -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestión de Grupos -->
+        <section id="gestion-grupo" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Gestión de Grupos</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="nombre-grupo" class="form-label">Crear Grupo:</label>
+                        <div class="input-group">
+                            <input type="text" id="nombre-grupo" class="form-control" placeholder="Nombre del Grupo">
+                            <button id="btn-crear-grupo" class="btn btn-success">Crear Grupo</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <label for="select-grupo" class="form-label">Seleccionar Grupo:</label>
+                        <select id="select-grupo" class="form-select">
+                            <option value="">--Seleccionar Grupo--</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="select-alumno-grupo" class="form-label">Asignar Alumno al Grupo:</label>
+                        <div class="input-group">
+                            <select id="select-alumno-grupo" class="form-select">
+                                <option value="">--Seleccionar Alumno--</option>
+                            </select>
+                            <button id="btn-asignar-alumno-grupo" class="btn btn-primary">Asignar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Búsqueda y Análisis -->
+        <section id="busqueda" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Búsqueda y Análisis</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="buscar-nombre" class="form-label">Buscar por Nombre:</label>
+                            <div class="input-group">
+                                <input type="text" id="buscar-nombre" class="form-control" placeholder="Nombre">
+                                <button id="btn-buscar-nombre" class="btn btn-secondary">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="buscar-apellido" class="form-label">Buscar por Apellido:</label>
+                            <div class="input-group">
+                                <input type="text" id="buscar-apellido" class="form-control" placeholder="Apellido">
+                                <button id="btn-buscar-apellido" class="btn btn-secondary">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-wrap gap-3 mb-3">
+                        <button id="btn-promedio-alumno" class="btn btn-info">Obtener Promedio de Alumno</button>
+                        <button id="btn-promedio-grupo" class="btn btn-info">Obtener Promedio de Grupo</button>
+                        <button id="btn-ordenar-asc" class="btn btn-warning">Ordenar Ascendente</button>
+                        <button id="btn-ordenar-desc" class="btn btn-warning">Ordenar Descendente</button>
+                        <button id="btn-ordenar-edad" class="btn btn-warning">Ordenar por Edad</button>
+                        <!-- Punto Extra -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados -->
+        <section id="resultados" class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Resultados</h2>
+                </div>
+                <div class="card-body">
+                    <div id="resultado" class="alert" role="alert">
+                        <!-- Mensajes de resultado -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para Editar Alumno -->
+    <div class="modal fade" id="editarAlumnoModal" tabindex="-1" aria-labelledby="editarAlumnoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="form-editar-alumno">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarAlumnoModalLabel">Editar Alumno</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="editar-alumno-id">
+                        <div class="mb-3">
+                            <label for="editar-nombre" class="form-label">Nombre</label>
+                            <input type="text" id="editar-nombre" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar-apellidos" class="form-label">Apellidos</label>
+                            <input type="text" id="editar-apellidos" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar-edad" class="form-label">Edad</label>
+                            <input type="number" id="editar-edad" class="form-control" required min="1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Grupo -->
+    <div class="modal fade" id="editarGrupoModal" tabindex="-1" aria-labelledby="editarGrupoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="form-editar-grupo">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarGrupoModalLabel">Editar Grupo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="editar-grupo-nombre-original">
+                        <div class="mb-3">
+                            <label for="editar-nombre-grupo" class="form-label">Nombre del Grupo</label>
+                            <input type="text" id="editar-nombre-grupo" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Materia -->
+    <div class="modal fade" id="editarMateriaModal" tabindex="-1" aria-labelledby="editarMateriaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="form-editar-materia">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarMateriaModalLabel">Editar Materia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="editar-materia-alumno-id">
+                        <input type="hidden" id="editar-materia-nombre-original">
+                        <div class="mb-3">
+                            <label for="editar-nombre-materia" class="form-label">Nombre de la Materia</label>
+                            <input type="text" id="editar-nombre-materia" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar-calificacion" class="form-label">Calificación</label>
+                            <input type="number" id="editar-calificacion" class="form-control"
+                                placeholder="Calificación" min="0" max="10" step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
